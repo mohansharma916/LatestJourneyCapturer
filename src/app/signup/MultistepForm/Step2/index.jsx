@@ -1,70 +1,98 @@
+import React, { useEffect } from "react";
 const Step2 = (props) => {
   const { data, handleChange } = props;
   const plans = [
     {
-      name: "Basic plan",
-      price: 12,
-      //   features: [
-      //     "Curabitur faucibus",
-      //     "massa ut pretium maximus",
-      //     "Sed posuere nisi",
-      //     "Pellentesque eu nibh et neque",
-      //     "Suspendisse a leo",
-      //     "Praesent quis venenatis ipsum",
-      //     "Duis non diam vel tortor",
-      //   ],
+      name: "Domestic Trips Plan",
+      price: "₹999",
+      // features: ["Curabitur faucibus", "massa ut pretium maximus"],
     },
     {
-      name: "Startup",
-      price: 35,
-      //   features: [
-      //     "Curabitur faucibus",
-      //     "massa ut pretium maximus",
-      //     "Sed posuere nisi",
-      //     "Pellentesque eu nibh et neque",
-      //     "Suspendisse a leo",
-      //     "Praesent quis venenatis ipsum",
-      //     "Duis non diam vel tortor",
-      //   ],
+      name: "International Trips Plan (Coming Soon)",
+      price: "Coming Soon ",
+      // features: ["Curabitur faucibus", "massa ut pretium maximus"],
     },
   ];
 
+  const handlePlanClick = (price) => {
+    // Handle the selected plan logic here
+    console.log("price", price);
+    setSelectedPlan(price);
+    // Call your handleChange function with the selected price
+    handleChange(price);
+  };
+
+  // useEffect(() => {
+  //   handleChange(999);
+  // }, []);
+
+  const [selectedPlan, setSelectedPlan] = React.useState("₹999");
+
   return (
-    <div className="max-w-xs md:max-w-lg mx-auto">
-      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
+    <div className="max-w-lg w-full md:max-w-lg mx-auto">
+      <form className="bg-white shadow-md rounded pt-6 pb-8 mb-4">
+        <div className="max-w-screen-xl mx-auto  text-gray-600 md:px-8">
           <div className="relative max-w-xl mx-auto sm:text-center">
-            <h3 className="text-gray-800 text-3xl font-semibold sm:text-4xl">
-              Pricing for all sizes
-            </h3>
+            <p className="text-gray-800 text-xl font-semibold sm:text-xl">
+              Membership Fee (One Time Only - Lifetime Access)
+            </p>
             <div className="mt-3 max-w-xl">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                efficitur consequat nunc.
-              </p>
+              <form className="w-full max-w-lg mx-auto bg-white shadow-md rounded px-2 pt-6 pb-8 mb-4">
+                <div>
+                  <div className="flex items-center ">
+                    <p>
+                      Pay Via UPI App <sup>*</sup> : (click Here → )
+                    </p>
+                    <div className="flex border-inherit gap-2 ml-6">
+                      <a href="upi://pay?pa=mohansharma916@okhdfcbank&cu=INR&am=999">
+                        <img
+                          className=""
+                          src="/images/google-pay.svg"
+                          width={40}
+                          height={40}
+                          alt="google-pay-Icon"
+                        />
+                      </a>
+                      <a href="upi://pay?pa=mohansharma916@okhdfcbank&cu=INR&am=99">
+                        <img
+                          className=""
+                          src="/images/phone-pay.png"
+                          width={40}
+                          height={40}
+                          alt="phone-pay-Icon"
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <p className=" text-slate-400 text-[8px]">
+                    {" "}
+                    <sup>*</sup>
+                    To Avoid Transaction Fee Of Payment Platform We are directly
+                    Receiving Payment Throygh UPI{" "}
+                  </p>
+                </div>
+              </form>
             </div>
           </div>
-          <div className="mt-16 space-y-6 justify-center gap-6 sm:grid sm:grid-cols-2 sm:space-y-0 lg:grid-cols-3">
+          <div className="mt-16 space-y-6 justify-center gap-6 grid grid-cols-2 sm:space-y-0 ">
             {plans.map((item, idx) => (
               <div
                 key={idx}
-                className="relative flex-1 flex items-stretch flex-col p-8 rounded-xl border-2"
+                className={`relative flex-1 flex  flex-col p-4 rounded-xl border-2 ${
+                  selectedPlan === item.price
+                    ? "border-indigo-600"
+                    : "border-gray-300"
+                }`}
+                name="price"
+                // onClick={() => handlePlanClick(item.price)}
               >
                 <div>
-                  <input
-                    type="radio"
-                    id="html"
-                    name="fav_language"
-                    value="HTML"
-                  />
                   <span className="text-indigo-600 font-medium">
                     {item.name}
                   </span>
-                  <div className="mt-4 text-gray-800 text-3xl font-semibold">
-                    ${item.price}{" "}
-                    <span className="text-xl text-gray-600 font-normal">
-                      /mo
-                    </span>
+                  <div className="mt-4 text-gray-800 mb-4 item-center text-3xl font-semibold">
+                    {item.price}{" "}
+                    <span className="text-xl text-gray-600 font-normal"></span>
                   </div>
                 </div>
                 {/* <ul className="py-8 space-y-3">
@@ -86,11 +114,6 @@ const Step2 = (props) => {
                     </li>
                   ))}
                 </ul> */}
-                <div className="flex-1 flex items-end">
-                  <button className="px-3 py-3 rounded-lg w-full font-semibold text-sm duration-150 text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700">
-                    Get Started
-                  </button>
-                </div>
               </div>
             ))}
           </div>

@@ -10,11 +10,13 @@ import Step1 from "@/app/signup/MultistepForm/Step1";
 import Step2 from "@/app/signup/MultistepForm/Step2";
 import Step3 from "@/app/signup/MultistepForm/Step3";
 import Step4 from "@/app/signup/MultistepForm/Step4";
+import Step5 from "@/app/signup/MultistepForm/Step5";
 
 const steps = [
   "Basic Details",
-  "Plan Type",
+  // "Plan Type",
   "Payment Details",
+  "Upload Your Proof",
   "Review Your Details",
 ];
 
@@ -27,7 +29,7 @@ const Signup = () => {
     email: "",
     dob: "",
     gender: "male",
-    address: "",
+    price: "",
   });
 
   const handleChange = (event) => {
@@ -82,8 +84,10 @@ const Signup = () => {
 
   const formElements = [
     <Step1 data={data} handleChange={handleChange} />,
-    <Step2 data={data} handleChange={handleChange} />,
-    <Step3 data={data} setData={setData} />,
+    // <Step2 data={data} handleChange={handleChange} />,
+    <Step3 data={data} handleChange={handleChange} />,
+    <Step4 data={data} />,
+    <Step5 />,
   ];
   return (
     <main className="w-full flex">
@@ -134,7 +138,8 @@ const Signup = () => {
           }}
         ></div>
       </div>
-      <div className="w-3/5 py-32 px-8">
+      <div className="w-3/5 bg-white py-16 px-8">
+        <p className="text-center pb-8"> Complete Your Registration </p>
         <Box sx={{ width: "100%" }}>
           <Stepper activeStep={activeStep}>
             {steps.map((label, index) => {

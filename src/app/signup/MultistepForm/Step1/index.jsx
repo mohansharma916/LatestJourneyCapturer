@@ -9,7 +9,7 @@ const Step1 = (props) => {
   return (
     <div className="max-w-xs md:max-w-lg mx-auto">
       <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <div className="mb-10">
+        <div className="mb-5">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="name"
@@ -25,7 +25,7 @@ const Step1 = (props) => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="mb-5">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="email"
@@ -41,7 +41,7 @@ const Step1 = (props) => {
             onChange={handleChange}
           />
         </div>
-        <div className="mb-10">
+        <div className="mb-5">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="number"
@@ -50,14 +50,14 @@ const Step1 = (props) => {
           </label>
           <input
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            name="name"
+            name="mobileNumber"
             type="number"
             placeholder="Mobile Number..."
-            value={data.name}
+            value={data.mobileNumber}
             onChange={handleChange}
           />
         </div>
-        <div className="inline-block relative w-64 mb-10">
+        <div className="inline-block relative w-64 mb-5">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="gender"
@@ -70,8 +70,8 @@ const Step1 = (props) => {
             value={data.gender}
             onChange={handleChange}
           >
-            <option value="male">Male</option>
-            <option value="female">Female</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
           </select>
         </div>
         <div>
@@ -79,7 +79,7 @@ const Step1 = (props) => {
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="dob"
           >
-            Dob
+            DOB
           </label>
           <input
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
